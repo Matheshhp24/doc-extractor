@@ -66,6 +66,18 @@ const Payment: React.FC = () => {
 
   const plans = [
     {
+      id: 'free',
+      name: 'Free',
+      price: '$0',
+      period: '',
+      features: [
+        'Extract text from up to 5 documents/month',
+        'Basic OCR capabilities',
+        'Export in TXT formats only',
+
+      ]
+    },
+    {
       id: 'monthly',
       name: 'Monthly',
       price: '$14.99',
@@ -135,6 +147,7 @@ const Payment: React.FC = () => {
                         : 'border-gray-200 dark:border-gray-700'
                     }`}
                     onClick={() => setPlanType(plan.id as PlanType)}
+
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div>
@@ -180,9 +193,17 @@ const Payment: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setCurrentStep('payment')}
-                  className="px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full shadow-md transition-colors"
+                  className={
+                    planType === 'annual' || planType === 'monthly'
+                    ? 'px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full shadow-md transition-colors'
+                    :""
+                  }
                 >
-                  Continue to Payment
+                  {planType === "monthly" || planType === "annual"
+                  ?"Continue to Payment":
+                  ""
+                  }
+                      
                 </motion.button>
               </div>
             </div>
