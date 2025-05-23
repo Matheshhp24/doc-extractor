@@ -4,11 +4,11 @@ import CreditCardComponent from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import { Check, CreditCard, Package, Shield } from 'lucide-react';
 
-type PlanType = 'monthly' | 'annual';
+type PlanType = 'monthly' | 'annual' | 'free';
 type PaymentStep = 'plan' | 'payment' | 'success';
 
 const Payment: React.FC = () => {
-  const [planType, setPlanType] = useState<PlanType>('monthly');
+  const [planType, setPlanType] = useState<PlanType>('free');
   const [currentStep, setCurrentStep] = useState<PaymentStep>('plan');
   
   // Credit card state
@@ -147,7 +147,7 @@ const Payment: React.FC = () => {
                         : 'border-gray-200 dark:border-gray-700'
                     }`}
                     onClick={() => setPlanType(plan.id as PlanType)}
-
+                    
                   >
                     <div className="flex justify-between items-start mb-4">
                       <div>
