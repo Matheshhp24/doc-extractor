@@ -53,8 +53,8 @@ const About: React.FC = () => {
   const timelineEvents = [
     {
       year: "2022",
-      title: "TextTract Founded",
-      description: "TextTract was founded with a mission to make text extraction accessible to everyone."
+      title: "DocCrunch.Ai Founded",
+      description: "DocCrunch.Ai was founded with a mission to make text extraction accessible to everyone."
     },
     {
       year: "2023",
@@ -101,7 +101,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4"
           >
-            About TextTract
+            About DocCrunch.Ai
           </motion.h1>
           
           <motion.p
@@ -127,7 +127,7 @@ const About: React.FC = () => {
           >
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h2>
             <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-              At TextTract, we're on a mission to liberate valuable information trapped in documents. 
+              At DocCrunch.Ai, we're on a mission to liberate valuable information trapped in documents. 
               We believe that text extraction should be effortless, accurate, and accessible to everyone. 
               Our technology empowers businesses and individuals to digitize, analyze, and leverage their 
               document content in ways that save time and unlock new insights.
@@ -321,7 +321,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl font-bold mb-6">
-              Ready to experience TextTract?
+              Ready to experience DocCrunch.Ai?
             </h2>
             <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-10">
               Join thousands of satisfied users who have transformed their document workflows
