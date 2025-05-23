@@ -297,16 +297,16 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 bg-white dark:bg-primary-900 rounded-2xl shadow-lg overflow-hidden"
         >
-          <div className="aspect-w-16 aspect-h-9 h-96">
-            <iframe 
+          {/* <div className="aspect-w-16 aspect-h-9 h-96"> */}
+            {/* <iframe 
   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.6487741439795!2d80.24094897490738!3d13.082680712172486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265d1f2e4c4d1%3A0x32d3f51cfa9a4b9!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1716463421123!5m2!1sen!2sin" 
   className="w-full h-full border-0"
   allowFullScreen={true}
   loading="lazy"
   title="Chennai Office Location"
-/>
+/> */}
 
-          </div>
+          {/* </div> */}
         </motion.div>
 
         {/* FAQ Section */}
