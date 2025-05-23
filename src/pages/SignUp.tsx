@@ -50,7 +50,7 @@ const SignUp: React.FC = () => {
               play
               style={{ width: 250, height: 250 }}
             />
-            <h2 className="text-2xl font-bold text-white mt-4 mb-2">Join TextTract</h2>
+            <h2 className="text-2xl font-bold text-white mt-4 mb-2">Join DocCrunch.Ai</h2>
             <p className="text-gray-300">
               Create an account to start extracting text from your documents.
             </p>
