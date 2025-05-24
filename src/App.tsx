@@ -10,7 +10,6 @@ const Dashboard = lazy(() => import('./pages/Dashboard'));
 const Payment = lazy(() => import('./pages/Payment'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
-
 function App() {
   return (
     <Router>

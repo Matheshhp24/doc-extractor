@@ -46,8 +46,8 @@ const Contact: React.FC = () => {
       icon: <Mail className="w-6 h-6 text-accent-500" />,
       title: "Email Us",
       details: [
-        "support@texttract.com",
-        "info@texttract.com"
+        "support@DocCrunch.Ai.com",
+        "info@DocCrunch.Ai.com"
       ]
     },
     {
