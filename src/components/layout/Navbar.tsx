@@ -54,7 +54,9 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
   // Close mobile menu when route changes
   useEffect(() => {
+      console.log("Location changed:", location.pathname);
     if (isOpen) {
+      console.log("Opened");
       setIsOpen(false);
     }
   }, [location.pathname]);
