@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, memo } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, FileText, User } from 'lucide-react';
 
-interface NavbarProps {
-  scrolled: boolean;
-}
+interface NavbarProps {}
 interface User {
   fullName: string;
   docLimit: number;
@@ -14,14 +12,30 @@ interface User {
 
 const API = import.meta.env.VITE_API_BASE_URL;
 
-const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  const toggleMenu = () => setIsOpen(!isOpen);
+  // Handle scroll state inside Navbar component
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+
+  const toggleMenu = useCallback(() => setIsOpen(!isOpen), [isOpen]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -33,11 +47,10 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
 
   // Close menu on route changes
   useEffect(() => {
-    console.log("isopen state is : ", isOpen);
     if (isOpen) {
       setIsOpen(false);
     }
-  }, [location.pathname]);
+  }, [location.pathname, isOpen]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -70,31 +83,31 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   };
 
   // Simple touch device detection
-  const isTouchDevice = () => {
+  const isTouchDevice = useCallback(() => {
     return ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-  };
+  }, []);
 
   // Toggle tooltip on mobile only
-  const handleNameClick = () => {
+  const handleNameClick = useCallback(() => {
     if (isTouchDevice()) {
       setShowTooltip((prev) => !prev);
     }
-  };
+  }, [isTouchDevice]);
 
   // Close menu immediately 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     // Force immediate state update
     setIsOpen(false);
-  };
+  }, []);
 
   // Navigate and ensure menu is closed first
-  const navigateTo = (path: string) => {
+  const navigateTo = useCallback((path: string) => {
     setIsOpen(false);
     // Small delay to allow state update to complete before navigation
     requestAnimationFrame(() => {
       navigate(path);
     });
-  };
+  }, [navigate]);
 
   return (
     <motion.nav
@@ -293,4 +306,5 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
   );
 };
 
-export default Navbar;
+// Memoize the Navbar component to prevent unnecessary re-renders
+export default memo(Navbar);
