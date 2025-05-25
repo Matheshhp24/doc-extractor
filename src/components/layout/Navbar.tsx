@@ -31,6 +31,14 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     { name: 'Contact', path: '/contact' },
   ];
 
+  // Close menu on route changes
+  useEffect(() => {
+    console.log("isopen state is : ", isOpen);
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  }, [location.pathname]);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -52,15 +60,6 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     fetchUser();
   }, [location.key]);
 
-  // Close mobile menu when route changes
-  useEffect(() => {
-      console.log("Location changed:", location.pathname);
-    if (isOpen) {
-      console.log("Opened");
-      setIsOpen(false);
-    }
-  }, [location.pathname]);
-
   const handleLogout = async () => {
     await fetch(`${API}/api/auth/logout`, {
       method: "POST",
@@ -80,6 +79,21 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     if (isTouchDevice()) {
       setShowTooltip((prev) => !prev);
     }
+  };
+
+  // Close menu immediately 
+  const closeMenu = () => {
+    // Force immediate state update
+    setIsOpen(false);
+  };
+
+  // Navigate and ensure menu is closed first
+  const navigateTo = (path: string) => {
+    setIsOpen(false);
+    // Small delay to allow state update to complete before navigation
+    requestAnimationFrame(() => {
+      navigate(path);
+    });
   };
 
   return (
@@ -216,27 +230,29 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait" initial={false}>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ 
+              duration: 0.1,
+              exit: { duration: 0.05 }
+            }}
             className="md:hidden bg-primary-900/95 backdrop-blur-lg mt-4 rounded-2xl"
           >
             <div className="flex flex-col space-y-4 p-6">
               {navLinks.map((link) => (
-                <Link
+                <div
                   key={link.path}
-                  to={link.path}
-                  className={`text-white hover:text-accent-400 transition-colors py-2 ${
+                  className={`text-white hover:text-accent-400 transition-colors py-2 block cursor-pointer ${
                     location.pathname === link.path ? 'text-accent-400' : ''
                   }`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => navigateTo(link.path)}
                 >
                   {link.name}
-                </Link>
+                </div>
               ))}
               <div className="flex flex-col space-y-3 pt-4 border-t border-white/10">
                 {user ? (
@@ -254,16 +270,18 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
                   </>
                 ) : (
                   <>
-                    <Link to="/login" onClick={() => setIsOpen(false)}>
-                      <button className="w-full px-5 py-2 rounded-full text-white border border-white/30 hover:bg-white/10 transition-colors">
+                    <div onClick={() => navigateTo('/login')} className="block w-full">
+                      <button 
+                        className="w-full px-5 py-2 rounded-full text-white border border-white/30 hover:bg-white/10 transition-colors">
                         Login
                       </button>
-                    </Link>
-                    <Link to="/signup" onClick={() => setIsOpen(false)}>
-                      <button className="w-full px-5 py-2 rounded-full bg-accent-500 text-white hover:bg-accent-600 transition-colors">
+                    </div>
+                    <div onClick={() => navigateTo('/signup')} className="block w-full">
+                      <button 
+                        className="w-full px-5 py-2 rounded-full bg-accent-500 text-white hover:bg-accent-600 transition-colors">
                         Sign Up
                       </button>
-                    </Link>
+                    </div>
                   </>
                 )}
               </div>

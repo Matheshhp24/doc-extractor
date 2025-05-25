@@ -335,7 +335,7 @@ const Contact: React.FC = () => {
                 answer: "Absolutely. All files are encrypted both in transit and at rest. We never store your documents longer than necessary for processing."
               },
               {
-                question: "Do you offer bulk processing?",
+                question: "Do you offer  processing?",
                 answer: "Yes, our Pro and Enterprise plans support batch processing of multiple documents simultaneously."
               }
             ].map((faq, index) => (
