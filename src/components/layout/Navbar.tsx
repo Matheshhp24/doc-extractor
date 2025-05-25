@@ -35,7 +35,10 @@ const Navbar: React.FC<NavbarProps> = () => {
     };
   }, [scrolled]);
 
-  const toggleMenu = useCallback(() => setIsOpen(!isOpen), [isOpen]);
+  const toggleMenu = useCallback(() => {
+    console.log('Toggle menu clicked, current state:', isOpen);
+    setIsOpen(!isOpen);
+  }, [isOpen]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -45,12 +48,20 @@ const Navbar: React.FC<NavbarProps> = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-  // Close menu on route changes
+  // Add debug effect to monitor state changes
   useEffect(() => {
+    console.log('Menu state changed to:', isOpen);
+  }, [isOpen]);
+
+  // Close menu on route changes - only dependent on location changes
+  useEffect(() => {
+    console.log('Route changed to:', location.pathname);
+    // Only close if the menu is currently open
     if (isOpen) {
+      console.log('Menu was open, closing due to route change');
       setIsOpen(false);
     }
-  }, [location.pathname, isOpen]);
+  }, [location.pathname]); // isOpen removed from dependencies
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -112,7 +123,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   return (
     <motion.nav
       className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 transition-all duration-300 ${
-        scrolled 
+        scrolled || isOpen
           ? 'bg-primary-300/290 backdrop-blur-md shadow-md' 
           : 'bg-transparent'
       }`}
@@ -235,8 +246,13 @@ const Navbar: React.FC<NavbarProps> = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-white focus:outline-none">
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            <button 
+              onClick={toggleMenu} 
+              className="text-white focus:outline-none p-2 rounded-md hover:bg-white/10 active:bg-white/20"
+              id="mobile-menu-button"
+              style={{ touchAction: "manipulation", position: "relative", zIndex: 1000 }}
+            >
+              {isOpen ? <X className="w-6 h-6 text-accent-400" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -246,16 +262,24 @@ const Navbar: React.FC<NavbarProps> = () => {
       <AnimatePresence mode="wait" initial={false}>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, scaleY: 0.9, transformOrigin: "top" }}
+            animate={{ opacity: 1, scaleY: 1 }}
+            exit={{ opacity: 0, scaleY: 0.9 }}
             transition={{ 
-              duration: 0.1,
-              exit: { duration: 0.05 }
+              type: "tween",
+              duration: 0.2,
+              ease: "easeOut"
             }}
-            className="md:hidden bg-primary-900/95 backdrop-blur-lg mt-4 rounded-2xl"
+            className="md:hidden bg-primary-800 border border-accent-500/30 backdrop-blur-xl mt-4 rounded-2xl overflow-hidden shadow-2xl absolute inset-x-0 mx-6"
+            style={{ zIndex: 999 }}
+            id="mobile-menu-container"
           >
-            <div className="flex flex-col space-y-4 p-6">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
+              className="flex flex-col space-y-4 p-6 bg-primary-800"
+            >
               {navLinks.map((link) => (
                 <div
                   key={link.path}
@@ -298,7 +322,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </>
                 )}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
