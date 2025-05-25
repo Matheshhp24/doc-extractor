@@ -52,6 +52,13 @@ const Navbar: React.FC<NavbarProps> = ({ scrolled }) => {
     fetchUser();
   }, [location.key]);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  }, [location.pathname]);
+
   const handleLogout = async () => {
     await fetch(`${API}/api/auth/logout`, {
       method: "POST",
