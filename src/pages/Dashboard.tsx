@@ -1,25 +1,49 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FileText, Upload, X, Copy, Download, CheckCircle2, AlertCircle } from 'lucide-react';
+import { FileText, Upload, X, Copy, Download, CheckCircle2, AlertCircle, LogOut } from 'lucide-react';
 import { useDropzone } from 'react-dropzone';
 import { createWorker, Worker } from 'tesseract.js';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
 type ProcessingStatus = 'idle' | 'processing' | 'success' | 'error';
+const API = import.meta.env.VITE_API_BASE_URL;
 
 const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
   const [file, setFile] = useState<File | null>(null);
   const [extractedText, setExtractedText] = useState('');
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [copied, setCopied] = useState(false);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
-  const onDrop = useCallback((acceptedFiles: File[]) => {
-    if (acceptedFiles.length > 0) {
-      setFile(acceptedFiles[0]);
-      processFile(acceptedFiles[0]);
+  
+  useEffect(() => {
+    if (status === 'success') {
+      handleSuccess();
     }
+  }, [status]);
+
+  const onDrop = useCallback(async(acceptedFiles: File[]) => {
+    try {
+        const res = await fetch(`${API}/api/auth/is-limit-exceeds`, {
+          method: "POST",
+          credentials: "include",
+        });
+
+        if (!res.ok) {
+          const errorMessage = await res.text(); // Read message from server
+          toast.error(errorMessage);
+          return;
+        }
+
+        setFile(acceptedFiles[0]);
+        processFile(acceptedFiles[0]);
+      } catch (err) {
+        console.error("Error checking document limit:", err);
+        toast.error("Something went wrong while checking your limit.");
+      }
+
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -140,12 +164,31 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  const handleSuccess = async() => {
+      try {
+        const res = await fetch(`${API}/api/auth/decrement-doc-used`, {
+          method: 'POST',
+          credentials: 'include', // send session cookie
+        });
+        const updatedDocUsed = await res.json();
+        if (res.ok) {
+          toast.success(updatedDocUsed);
+          // Optionally update your user state here if needed
+        } else {
+          toast.error(updatedDocUsed);
+        }
+      } catch (err) {
+        console.error('Error:', err);
+      }
+  }
+
+
   const getStatusMessage = () => {
     switch (status) {
       case 'processing':
         return 'Processing your document...';
       case 'success':
-        return 'Text extracted successfully!';
+        return 'Document processed successfully!';
       case 'error':
         return 'An error occurred during extraction.';
       default:
@@ -157,17 +200,19 @@ const Dashboard: React.FC = () => {
     <div className="min-h-screen pt-24 pb-12 px-4 bg-gray-800 dark:bg-primary-950">
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-8 text-center"
-          >
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Document Text Extraction</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-400">
-              Upload your document to extract the text content
-            </p>
-          </motion.div>
+          <div className="flex justify-between items-center mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">Document Text Extraction</h1>
+              <p className="text-lg text-gray-600 dark:text-gray-400">
+                Upload your document to extract the text content
+              </p>
+            </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Upload Section */}

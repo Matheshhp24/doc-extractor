@@ -1,11 +1,35 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect,useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight } from 'lucide-react';
 import Lottie from 'react-lottie-player';
 import authAnimation from '../assets/auth-animation.json';
+import { toast } from 'react-hot-toast'; // Make sure you have react-hot-toast installed
 
+
+const API = import.meta.env.VITE_API_BASE_URL;
 const SignUp: React.FC = () => {
+  const navigate = useNavigate();
+  
+    useEffect(() => {
+      // Check if the user is already logged in by making an API call or checking local state
+      const fetchUser = async () => {
+        try {
+          const res = await fetch(`${API}/api/auth/me`, {
+            credentials: "include",
+          });
+  
+          if (res.ok) {
+            navigate("/dashboard")  // If the user is logged in, set user data
+          } 
+        } catch (error) {
+          console.log(error);
+        }
+      };
+  
+      fetchUser();
+
+    }, [navigate]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,15 +37,43 @@ const SignUp: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    setError(null);
+
+    try {
+      const response = await fetch(`${API}/api/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fullName: name,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword
+        }),
+      });
+
+      const data = await response.text();
+
+      if (response.ok) {
+        toast.success('Account created successfully!');
+        navigate('/login');
+      } else {
+        setError(data || 'Something went wrong');
+        toast.error(data || 'Failed to create account');
+      }
+    } catch (err) {
+      console.error('Error:', err);
+      setError('Network error. Please try again.');
+      toast.error('Network error. Please try again.');
+    } finally {
       setIsLoading(false);
-      // Redirect would happen here in a real app
-    }, 1500);
+    }
   };
 
   const handleNextStep = (e: React.FormEvent) => {
@@ -233,6 +285,12 @@ const SignUp: React.FC = () => {
             )}
           </form>
 
+          {error && (
+            <div className="mt-4 text-sm text-red-600 dark:text-red-400 text-center">
+              {error}
+            </div>
+          )}
+          
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Already have an account?{' '}

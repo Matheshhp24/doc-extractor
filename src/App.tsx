@@ -1,26 +1,37 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Loading from './components/common/Loading';
+import { Toaster } from 'react-hot-toast';
+import ProtectedRoute from './components/ProtectedRoute';
 
-const Layout = lazy(() => import('./components/layout/Layout'));
-const Home = lazy(() => import('./pages/Home'));
-const Login = lazy(() => import('./pages/Login'));
-const SignUp = lazy(() => import('./pages/SignUp'));
-const Dashboard = lazy(() => import('./pages/Dashboard'));
-const Payment = lazy(() => import('./pages/Payment'));
-const About = lazy(() => import('./pages/About'));
-const Contact = lazy(() => import('./pages/Contact'));
+const Layout = React.lazy(() => import('./components/layout/Layout'));
+const Home = React.lazy(() => import('./pages/Home'));
+const Login = React.lazy(() => import('./pages/Login'));
+const SignUp = React.lazy(() => import('./pages/SignUp'));
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const Payment = React.lazy(() => import('./pages/Payment'));
+const About = React.lazy(() => import('./pages/About'));
+const Contact = React.lazy(() => import('./pages/Contact'));
 function App() {
   return (
     <Router>
+      <Toaster position="top-right" />
       <Suspense fallback={<Loading />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<SignUp />} />
-            <Route path="dashboard" element={<Dashboard />} />
-            <Route path="payment" element={<Payment />} />
+            <Route path="dashboard" element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            } />
+            <Route path="payment" element={
+              <ProtectedRoute>
+                <Payment />
+              </ProtectedRoute>
+            } />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
           </Route>

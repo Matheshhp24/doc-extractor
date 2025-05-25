@@ -1,25 +1,75 @@
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import Lottie from 'react-lottie-player';
 import authAnimation from '../assets/auth-animation.json';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-hot-toast';
 
-const Login: React.FC = () => {
+
+
+
+const API = import.meta.env.VITE_API_BASE_URL;
+const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: string } | null>(null);
+    
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check if the user is already logged in by making an API call or checking local state
+    const fetchUser = async () => {
+      try {
+        const res = await fetch(`${API}/api/auth/me`, {
+          credentials: "include",
+        });
+
+        if (res.ok) {
+          navigate("/dashboard");  // If the user is logged in, set user data
+        } 
+      } catch (error) {
+        setUser(null);
+      }
+    };
+
+    fetchUser();
+
+  }, [user,navigate]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  // const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+
+    try {
+      const response = await fetch(`${API}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: 'include', // Add this to handle cookies
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        toast.success('Login successful');
+        navigate("/dashboard");
+      } else {
+        const errorText = await response.text();
+        toast.error(errorText || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      toast.error('Network error. Please try again.');
+    } finally {
       setIsLoading(false);
-      // Redirect would happen here in a real app
-    }, 1500);
+    }
   };
+
 
   return (
     <div className="min-h-screen pt-24 pb-12 flex items-center justify-center px-4 bg-primary-950">
