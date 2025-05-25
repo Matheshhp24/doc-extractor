@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, AlertCircle } from 'lucide-react';
 import Lottie from 'react-lottie-player';
 import contactAnimation from '../assets/contact-animation.json';
+import emailjs from '@emailjs/browser';
+import type { EmailJSResponseStatus } from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,6 +15,26 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // EmailJS service and template IDs from environment variables
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  const CONTACT_EMAIL = import.meta.env.VITE_CONTACT_EMAIL;
+
+  // Check if EmailJS configuration is available
+  const isEmailJSConfigured = !!SERVICE_ID && !!TEMPLATE_ID && !!PUBLIC_KEY;
+
+  // Initialize EmailJS with your public key
+  useEffect(() => {
+    if (PUBLIC_KEY) {
+      emailjs.init(PUBLIC_KEY);
+    } else {
+      console.warn('EmailJS public key is missing. Email functionality will not work.');
+    }
+  }, [PUBLIC_KEY]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -22,23 +44,60 @@ const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate form submission
-    setTimeout(() => {
+    // Check if EmailJS is configured
+    if (!isEmailJSConfigured) {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-      
-      // Reset form after a delay
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      }, 3000);
-    }, 1500);
+      setError('Email service is not configured. Please contact the administrator.');
+      return;
+    }
+    
+    // Prepare template parameters
+    const templateParams = {
+      to_email: CONTACT_EMAIL,
+      from_name: formData.name,
+      from_email: CONTACT_EMAIL, 
+      subject: formData.subject,
+      message: `User Email: ${formData.email}\n\n${formData.message}`, // Including user email in the message body
+      // Additional parameters that might be useful
+      contact_number: Date.now(),
+      reply_to: CONTACT_EMAIL // Reply will go back to FreeFire email
+    };
+    
+    // Send email using EmailJS
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
+      .then((response: EmailJSResponseStatus) => {
+        console.log('Email sent successfully:', response);
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        
+        // Reset form after a delay
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: ''
+          });
+        }, 5000);
+      })
+      .catch((err: any) => {
+        console.error('Failed to send email:', err);
+        setIsSubmitting(false);
+        
+        // Provide more specific error messages based on the error
+        if (err.status === 0) {
+          setError('Network error. Please check your internet connection and try again.');
+        } else if (err.status === 400) {
+          setError('Invalid email configuration. Please contact the site administrator.');
+        } else if (err.status === 403) {
+          setError('Email service authentication failed. Please contact the site administrator.');
+        } else {
+          setError(`Failed to send message. Please try again or contact us directly at ${CONTACT_EMAIL}`);
+        }
+      });
   };
 
   const contactInfo = [
@@ -46,8 +105,8 @@ const Contact: React.FC = () => {
       icon: <Mail className="w-6 h-6 text-accent-500" />,
       title: "Email Us",
       details: [
-        "support@DocCrunch.Ai.com",
-        "info@DocCrunch.Ai.com"
+        CONTACT_EMAIL,
+        "support@DocCrunch.Ai.com"
       ]
     },
     {
@@ -80,6 +139,9 @@ const Contact: React.FC = () => {
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Get In Touch</h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Have questions about our text extraction technology? We're here to help!
+          </p>
+          <p className="mt-2 text-accent-600 dark:text-accent-400">
+            Your messages will be sent from and to our support team at <span className="font-medium">{CONTACT_EMAIL}</span>
           </p>
         </motion.div>
 
@@ -185,8 +247,34 @@ const Contact: React.FC = () => {
                     Thank you for contacting us. We'll get back to you shortly.
                   </p>
                 </motion.div>
+              ) : error ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-900/30 rounded-lg p-6 text-center mb-6"
+                >
+                  <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <AlertCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    Message Failed
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
+                    {error}
+                  </p>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => setError(null)}
+                    className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Try Again
+                  </motion.button>
+                </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                  {/* Hidden field to help prevent spam */}
+                  <input type="hidden" name="contact_number" value={Date.now()} />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -206,7 +294,7 @@ const Contact: React.FC = () => {
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                        Email Address
+                        Your Email Address
                       </label>
                       <motion.input
                         whileFocus={{ scale: 1.01 }}
@@ -219,9 +307,11 @@ const Contact: React.FC = () => {
                         placeholder="your@email.com"
                         required
                       />
+                      <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                        We'll include this in your message so we can reply to you
+                      </p>
                     </div>
                   </div>
-
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       Subject
