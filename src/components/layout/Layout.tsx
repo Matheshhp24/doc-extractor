@@ -25,10 +25,12 @@ const MemoizedOutlet = memo(() => {
 
 const Layout: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
-      <main className="flex-grow bg-primary-950">
-        <MemoizedOutlet />
+      <main className="flex-grow bg-white px-4 pt-20 pb-12 md:pt-24 md:pb-16 shadow-sm">
+        <div className="container mx-auto">
+          <MemoizedOutlet />
+        </div>
       </main>
       <Footer />
     </div>

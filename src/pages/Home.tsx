@@ -20,22 +20,22 @@ const Home: React.FC = () => {
 
   const features = [
     { 
-      icon: <FileText className="w-10 h-10 text-primary-500" />,
+      icon: <FileText className="w-10 h-10 text-violet-500" />,
       title: "Smart Document Analysis",
       description: "Advanced algorithms that accurately extract text from any document type while preserving formatting."
     },
     { 
-      icon: <Upload className="w-10 h-10 text-primary-500" />,
+      icon: <Upload className="w-10 h-10 text-violet-500" />,
       title: "Batch Processing",
       description: "Upload multiple documents at once and process them in parallel for maximum efficiency."
     },
     { 
-      icon: <Search className="w-10 h-10 text-primary-500" />,
+      icon: <Search className="w-10 h-10 text-violet-500" />,
       title: "Intelligent Search",
       description: "Quickly find specific information within extracted text using our smart search functionality."
     },
     { 
-      icon: <Download className="w-10 h-10 text-primary-500" />,
+      icon: <Download className="w-10 h-10 text-violet-500" />,
       title: "Export Options",
       description: "Export extracted text in multiple formats including TXT, DOC, PDF, and more."
     }
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
         {/* Video Background */}
         <div className="absolute inset-0">
   {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-950/70 via-primary-900/60 to-primary-950/90 z-10 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-violet-50/60 to-white/90 z-10 pointer-events-none"></div>
 
           {/* Background video */}
           <video
@@ -79,17 +79,17 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
           >
             Extract Text from <br />
-            <span className="text-accent-500">Any Document</span>
+            <span className="text-violet-500">Any Document</span>
           </motion.h1>
           
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl text-gray-300 max-w-2xl mb-10"
+            className="text-xl text-gray-600 max-w-2xl mb-10"
           >
             Whether it’s a scanned invoice, a blurry contract, or a 50-page vendor form — your AI-powered extractor sees it, understands it, and delivers crystal-clear data.
 No templates. No rules. Just results.
@@ -106,7 +106,7 @@ No templates. No rules. Just results.
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full transition-colors"
+                className="px-8 py-3 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full transition-colors"
               >
                 Try It Now
               </motion.button>
@@ -115,7 +115,7 @@ No templates. No rules. Just results.
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border border-white/30 hover:bg-white/10 text-white font-medium rounded-full transition-colors"
+                className="px-8 py-3 border border-gray-300 hover:bg-gray-100 text-gray-800 font-medium rounded-full transition-colors"
               >
                 Learn More
               </motion.button>
@@ -135,13 +135,13 @@ No templates. No rules. Just results.
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
           >
-            <ChevronDown className="w-10 h-10 text-white/70" />
+            <ChevronDown className="w-10 h-10 text-gray-600" />
           </motion.div>
         </motion.div>
       </div>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-primary-950">
+      <section id="features" className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -150,10 +150,10 @@ No templates. No rules. Just results.
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
               Powerful Features
             </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Our text extraction platform comes packed with advanced features
               to handle all your document processing needs.
             </p>
@@ -174,7 +174,7 @@ No templates. No rules. Just results.
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-900 to-primary-800">
+      <section className="py-20 bg-gradient-to-r from-violet-100 to-violet-200">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -182,17 +182,17 @@ No templates. No rules. Just results.
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
               Ready to transform your document workflow?
             </h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-10">
               Join thousands of users who are already saving time with our powerful text extraction tool.
             </p>
             <Link to="/signup">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full transition-colors"
+                className="px-8 py-3 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full transition-colors"
               >
                 Get Started Free
               </motion.button>

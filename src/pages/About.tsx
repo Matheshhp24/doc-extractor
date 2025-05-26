@@ -29,22 +29,22 @@ const About: React.FC = () => {
 
   const features = [
     {
-      icon: <FileText className="w-8 h-8 text-primary-500" />,
+      icon: <FileText className="w-8 h-8 text-violet-500" />,
       title: "Advanced OCR Technology",
       description: "Our cutting-edge optical character recognition accurately extracts text from any document type, including scanned PDFs and images."
     },
     {
-      icon: <Zap className="w-8 h-8 text-primary-500" />,
+      icon: <Zap className="w-8 h-8 text-violet-500" />,
       title: "Lightning Fast Processing",
       description: "Process documents in seconds, not minutes, with our optimized algorithms and cloud-based infrastructure."
     },
     {
-      icon: <Lock className="w-8 h-8 text-primary-500" />,
+      icon: <Lock className="w-8 h-8 text-violet-500" />,
       title: "Enterprise-Grade Security",
       description: "Your documents are encrypted both in transit and at rest. We never store your files longer than necessary."
     },
     {
-      icon: <Users className="w-8 h-8 text-primary-500" />,
+      icon: <Users className="w-8 h-8 text-violet-500" />,
       title: "Collaborative Workspaces",
       description: "Share extracted text with your team, add comments, and collaborate in real-time to improve productivity."
     }
@@ -81,12 +81,12 @@ const About: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <div ref={targetRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden bg-primary-950">
+      <div ref={targetRef} className="relative h-[50vh] md:h-[60vh] overflow-hidden bg-white">
         <motion.div
           style={{ y }}
           className="absolute inset-0 z-0"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-primary-900/70 to-primary-950 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-violet-100/70 to-white z-10"></div>
           <img
             src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Team working on documents"
@@ -99,7 +99,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4"
+            className="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-4"
           >
             About DocCrunch.Ai
           </motion.h1>
@@ -108,7 +108,7 @@ const About: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-300 max-w-2xl"
+            className="text-xl text-gray-600 max-w-2xl"
           >
             Revolutionizing document management through innovative text extraction technology
           </motion.p>
@@ -116,7 +116,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Mission Statement */}
-      <section className="py-16 bg-white dark:bg-primary-950">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -125,8 +125,8 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Our Mission</h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Our Mission</h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
               At DocCrunch.Ai, we're on a mission to liberate valuable information trapped in documents. 
               We believe that text extraction should be effortless, accurate, and accessible to everyone. 
               Our technology empowers businesses and individuals to digitize, analyze, and leverage their 
@@ -137,7 +137,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section ref={featuresRef} className="py-16 bg-gray-50 dark:bg-primary-900">
+      <section ref={featuresRef} className="py-16 bg-violet-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -145,10 +145,10 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
               What Makes Us Different
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Our cutting-edge features set us apart from traditional document processing solutions
             </p>
           </motion.div>
@@ -161,15 +161,15 @@ const About: React.FC = () => {
                 initial="hidden"
                 animate={featuresInView ? "visible" : "hidden"}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-primary-800 rounded-2xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 hover:shadow-md transition-shadow duration-300"
               >
-                <div className="bg-primary-100 dark:bg-primary-700/30 p-4 rounded-2xl inline-block mb-4">
+                <div className="bg-violet-100 p-4 rounded-2xl inline-block mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-600">
                   {feature.description}
                 </p>
               </motion.div>
@@ -179,7 +179,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Timeline Section */}
-      <section ref={timelineRef} className="py-16 bg-white dark:bg-primary-950">
+      <section ref={timelineRef} className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -187,17 +187,17 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
               Our Journey
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               From startup to industry leader in text extraction technology
             </p>
           </motion.div>
 
           <div className="relative max-w-3xl mx-auto">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-primary-200 dark:bg-primary-800"></div>
+            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-violet-200"></div>
 
             {/* Timeline events */}
             {timelineEvents.map((event, index) => (
@@ -210,17 +210,17 @@ const About: React.FC = () => {
                 className={`relative mb-12 md:mb-16 ${index % 2 === 0 ? 'md:text-right md:pr-12 md:ml-auto md:mr-1/2' : 'md:text-left md:pl-12 md:mr-auto md:ml-1/2'} md:w-1/2`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-[-8px] md:left-auto md:right-[-8px] top-0 w-4 h-4 rounded-full bg-primary-500 border-4 border-white dark:border-primary-950"></div>
+                <div className="absolute left-[-8px] md:left-auto md:right-[-8px] top-0 w-4 h-4 rounded-full bg-violet-500 border-4 border-white"></div>
                 
                 {/* Year badge */}
-                <div className="inline-block bg-primary-100 dark:bg-primary-800 text-primary-800 dark:text-primary-100 px-3 py-1 rounded-full text-sm font-semibold mb-2">
+                <div className="inline-block bg-violet-100 text-violet-800 px-3 py-1 rounded-full text-sm font-semibold mb-2">
                   {event.year}
                 </div>
                 
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   {event.title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-600">
                   {event.description}
                 </p>
               </motion.div>
@@ -230,7 +230,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-gray-50 dark:bg-primary-900">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -239,10 +239,10 @@ const About: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">
               Meet Our Team
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               A passionate group of experts dedicated to revolutionizing document processing
             </p>
           </motion.div>
@@ -286,7 +286,7 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white dark:bg-primary-800 rounded-2xl shadow-lg overflow-hidden group"
+                className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group"
               >
                 <div className="relative overflow-hidden h-72">
                   <img 
@@ -297,10 +297,10 @@ const About: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  <h3 className="text-xl font-semibold text-gray-800">
                     {member.name}
                   </h3>
-                  <p className="text-primary-600 dark:text-primary-400">
+                  <p className="text-violet-600">
                     {member.role}
                   </p>
                 </div>
@@ -312,7 +312,7 @@ const About: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+      <section className="py-16 bg-gradient-to-r from-violet-500 to-violet-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -323,14 +323,14 @@ const About: React.FC = () => {
             <h2 className="text-3xl font-bold mb-6">
               Ready to experience DocCrunch.Ai?
             </h2>
-            <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-10">
+            <p className="text-xl text-violet-100 max-w-3xl mx-auto mb-10">
               Join thousands of satisfied users who have transformed their document workflows
             </p>
             <Link to="/dashboard">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-white text-primary-700 font-medium rounded-full shadow-md hover:bg-primary-50 transition-colors inline-flex items-center"
+                className="px-8 py-3 bg-white text-violet-700 font-medium rounded-full shadow-md hover:bg-violet-50 transition-colors inline-flex items-center"
               >
                 Try It Now
                 <ArrowRight className="ml-2 w-5 h-5" />

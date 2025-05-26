@@ -86,14 +86,14 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-12 flex items-center justify-center px-4 bg-primary-950">
+    <div className="min-h-screen flex items-center justify-center px-4 bg-white">
       <div className="w-full max-w-4xl flex flex-col md:flex-row overflow-hidden">
         {/* Left side - Animation */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-primary-800 to-primary-900 p-8 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none flex-1 flex items-center justify-center"
+          className="bg-gradient-to-br from-violet-800 to-violet-500 p-8 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none flex-1 flex items-center justify-center"
         >
           <div className="text-center">
             <Lottie
@@ -102,8 +102,8 @@ const SignUp: React.FC = () => {
               play
               style={{ width: 250, height: 250 }}
             />
-            <h2 className="text-2xl font-bold text-white mt-4 mb-2">Join DocCrunch.Ai</h2>
-            <p className="text-gray-300">
+            <h2 className="text-2xl font-bold text-gray-100 mt-4 mb-2">Join DocCrunch.Ai</h2>
+            <p className="text-gray-100">
               Create an account to start extracting text from your documents.
             </p>
           </div>
@@ -114,11 +114,11 @@ const SignUp: React.FC = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white dark:bg-primary-900 p-8 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex-1"
+          className="bg-white p-8 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex-1 shadow-sm border border-gray-100"
         >
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Create Account</h1>
-            <p className="text-gray-600 dark:text-gray-400">
+            <h1 className="text-2xl font-bold text-gray-800 mb-2">Create Account</h1>
+            <p className="text-gray-600">
               {currentStep === 1 ? "Let's get started with your account" : "Just a few more details"}
             </p>
           </div>
@@ -127,12 +127,12 @@ const SignUp: React.FC = () => {
             {currentStep === 1 ? (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Full Name
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-gray-400" />
+                      <User className="h-5 w-5 text-violet-400" />
                     </div>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -140,7 +140,7 @@ const SignUp: React.FC = () => {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="pl-10 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-primary-800 text-gray-900 dark:text-white"
+                      className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
                       placeholder="John Doe"
                       required
                     />
@@ -148,12 +148,12 @@ const SignUp: React.FC = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Email
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Mail className="h-5 w-5 text-gray-400" />
+                      <Mail className="h-5 w-5 text-violet-400" />
                     </div>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -161,7 +161,7 @@ const SignUp: React.FC = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pl-10 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-primary-800 text-gray-900 dark:text-white"
+                      className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
                       placeholder="your@email.com"
                       required
                     />
@@ -173,22 +173,22 @@ const SignUp: React.FC = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent-600 hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-colors"
+                    className="w-full flex justify-center items-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-colors"
                   >
                     Continue
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 text-violet-100" />
                   </motion.button>
                 </div>
               </div>
             ) : (
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Password
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Lock className="h-5 w-5 text-gray-400" />
+                      <Lock className="h-5 w-5 text-violet-400" />
                     </div>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -196,7 +196,7 @@ const SignUp: React.FC = () => {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="pl-10 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-primary-800 text-gray-900 dark:text-white"
+                      className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
                       placeholder="••••••••"
                       required
                     />
@@ -204,7 +204,7 @@ const SignUp: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 focus:outline-none"
+                        className="text-violet-400 hover:text-violet-500 focus:outline-none"
                       >
                         {showPassword ? (
                           <EyeOff className="h-5 w-5" />
@@ -217,12 +217,12 @@ const SignUp: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Confirm Password
                   </label>
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Lock className="h-5 w-5 text-gray-400" />
+                      <Lock className="h-5 w-5 text-violet-400" />
                     </div>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -230,7 +230,7 @@ const SignUp: React.FC = () => {
                       type={showPassword ? "text" : "password"}
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
-                      className="pl-10 w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white dark:bg-primary-800 text-gray-900 dark:text-white"
+                      className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
                       placeholder="••••••••"
                       required
                     />
@@ -242,11 +242,11 @@ const SignUp: React.FC = () => {
                     id="terms"
                     name="terms"
                     type="checkbox"
-                    className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                    className="h-4 w-4 text-violet-600 focus:ring-violet-500 border-gray-300 rounded"
                     required
                   />
-                  <label htmlFor="terms" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                    I agree to the <a href="#" className="text-primary-600 hover:text-primary-500 dark:text-primary-400">Terms of Service</a> and <a href="#" className="text-primary-600 hover:text-primary-500 dark:text-primary-400">Privacy Policy</a>
+                  <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
+                    I agree to the <a href="#" className="text-violet-600 hover:text-violet-500">Terms of Service</a> and <a href="#" className="text-violet-600 hover:text-violet-500">Privacy Policy</a>
                   </label>
                 </div>
 
@@ -256,7 +256,7 @@ const SignUp: React.FC = () => {
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={isLoading}
-                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent-600 hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-colors"
+                    className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-colors"
                   >
                     {isLoading ? (
                       <div className="flex items-center">
@@ -276,7 +276,7 @@ const SignUp: React.FC = () => {
                     whileTap={{ scale: 0.98 }}
                     type="button"
                     onClick={handlePrevStep}
-                    className="w-full py-2 px-4 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-primary-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-colors"
+                    className="w-full py-2 px-4 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-colors"
                   >
                     Back
                   </motion.button>
@@ -286,15 +286,15 @@ const SignUp: React.FC = () => {
           </form>
 
           {error && (
-            <div className="mt-4 text-sm text-red-600 dark:text-red-400 text-center">
+            <div className="mt-4 text-sm text-red-600 text-center">
               {error}
             </div>
           )}
           
           <div className="mt-6 text-center">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600">
               Already have an account?{' '}
-              <Link to="/login" className="font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400">
+              <Link to="/login" className="font-medium text-violet-600 hover:text-violet-500">
                 Sign in
               </Link>
             </p>
