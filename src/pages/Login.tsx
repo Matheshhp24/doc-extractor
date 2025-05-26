@@ -72,8 +72,8 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
 
 
   return (
-    <div className="min-h-screen py-20 md:py-0 md:h-screen flex items-center justify-center px-4 bg-white">
-      <div className="w-full max-w-4xl md:max-h-[640px] flex flex-col md:flex-row overflow-hidden">
+    <div className="min-h-screen py-24 sm:py-16 md:py-0 md:h-screen flex items-center justify-center px-4 bg-white">
+      <div className="w-full max-w-4xl md:max-h-[640px] min-h-[550px] md:min-h-[500px] flex flex-col md:flex-row overflow-hidden">
         {/* Left side - Animation */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
@@ -81,15 +81,17 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
           transition={{ duration: 0.5 }}
           className="bg-gradient-to-br from-accent-800 to-accent-500 p-4 md:p-8 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none flex-1 flex items-center justify-center"
         >
-          <div className="text-center">
-            <Lottie
-              loop
-              animationData={authAnimation}
-              play
-              style={{ width: 120, height: 120 }}
-            />
-            <h2 className="text-2xl font-bold text-gray-100 mt-4 mb-2">Welcome Back!</h2>
-            <p className="text-gray-100">
+          <div className="text-center w-full flex flex-col items-center justify-center px-4 sm:px-6 md:px-8">
+            <div className="w-[200px] h-[200px] sm:w-[220px] sm:h-[220px] md:w-[240px] md:h-[240px]">
+              <Lottie
+                loop
+                animationData={authAnimation}
+                play
+                style={{ width: '100%', height: '100%' }}
+              />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mt-6 sm:mt-8 mb-3 sm:mb-4">Welcome Back!</h2>
+            <p className="text-white/95 max-w-[260px] sm:max-w-[300px] mx-auto text-base md:text-lg leading-relaxed">
               Access your account to extract text from your documents.
             </p>
           </div>
@@ -100,7 +102,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white p-4 md:p-8 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex-1 shadow-sm border border-gray-100"
+          className="bg-white p-4 sm:p-6 md:p-8 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex-1 shadow-sm border border-gray-100"
         >
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Login</h1>
@@ -110,7 +112,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-4">
+            <div className="space-y-4 sm:space-y-5 mb-2 sm:mb-0">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Email
@@ -209,7 +211,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
             </div>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center pb-6 sm:pb-4 md:pb-0">
             <p className="text-sm text-gray-600">
               Don't have an account?{' '}
               <Link to="/signup" className="font-medium text-accent-600 hover:text-accent-500">
