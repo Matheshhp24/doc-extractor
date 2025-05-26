@@ -139,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.5 }}
             >
-              <FileText className="w-8 h-8 text-violet-500" />
+              <FileText className="w-8 h-8 text-accent-500" />
             </motion.div>
             <motion.span 
               className="text-gray-800 text-xl font-bold tracking-wider"
@@ -157,13 +157,13 @@ const Navbar: React.FC<NavbarProps> = () => {
               <Link 
                 key={link.path} 
                 to={link.path}
-                className={`text-gray-600 hover:text-violet-600 transition-all duration-200 relative ${
-                  location.pathname === link.path ? 'text-violet-500 font-medium' : ''
+                className={`text-gray-600 hover:text-accent-600 transition-all duration-200 relative ${
+                  location.pathname === link.path ? 'text-accent-500 font-medium' : ''
                 }`}
               >
                 {location.pathname === link.path && (
                   <motion.span
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-violet-500 rounded-full"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent-500 rounded-full"
                     layoutId="navbar-indicator"
                   />
                 )}
@@ -235,7 +235,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-5 py-2 rounded-full bg-violet-500 text-white hover:bg-violet-600 transition-all duration-200"
+                    className="px-5 py-2 rounded-full bg-accent-500 text-white hover:bg-accent-600 transition-all duration-200"
                   >
                     Sign Up
                   </motion.button>
@@ -252,7 +252,7 @@ const Navbar: React.FC<NavbarProps> = () => {
               id="mobile-menu-button"
               style={{ touchAction: "manipulation", position: "relative", zIndex: 1000 }}
             >
-              {isOpen ? <X className="w-6 h-6 text-violet-500" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-6 h-6 text-accent-500" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
@@ -283,8 +283,8 @@ const Navbar: React.FC<NavbarProps> = () => {
               {navLinks.map((link) => (
                 <div
                   key={link.path}
-                  className={`text-gray-600 hover:text-violet-600 transition-all duration-200 py-2 block cursor-pointer ${
-                    location.pathname === link.path ? 'text-violet-500 font-medium' : ''
+                  className={`text-gray-600 hover:text-accent-600 transition-all duration-200 py-2 block cursor-pointer ${
+                    location.pathname === link.path ? 'text-accent-500 font-medium' : ''
                   }`}
                   onClick={() => navigateTo(link.path)}
                 >
@@ -315,7 +315,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                     </div>
                     <div onClick={() => navigateTo('/signup')} className="block w-full">
                       <button 
-                        className="w-full px-5 py-2 rounded-full bg-violet-500 text-white hover:bg-violet-600 transition-all duration-200">
+                        className="w-full px-5 py-2 rounded-full bg-accent-500 text-white hover:bg-accent-600 transition-all duration-200"
+                      >
                         Sign Up
                       </button>
                     </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronDown, FileText, Upload, Download, Search } from 'lucide-react';
 import FeatureCard from '../components/home/FeatureCard';
-import backgroundVideo from '../assets/13710627_1920_1080_25fps.mp4';
+import backgroundVideo from '../assets/1793334-hd_1920_1080_30fps.mp4';
 
 
 
@@ -20,22 +20,22 @@ const Home: React.FC = () => {
 
   const features = [
     { 
-      icon: <FileText className="w-10 h-10 text-violet-500" />,
+      icon: <FileText className="w-10 h-10 text-accent-500" />,
       title: "Smart Document Analysis",
       description: "Advanced algorithms that accurately extract text from any document type while preserving formatting."
     },
     { 
-      icon: <Upload className="w-10 h-10 text-violet-500" />,
+      icon: <Upload className="w-10 h-10 text-accent-500" />,
       title: "Batch Processing",
       description: "Upload multiple documents at once and process them in parallel for maximum efficiency."
     },
     { 
-      icon: <Search className="w-10 h-10 text-violet-500" />,
+      icon: <Search className="w-10 h-10 text-accent-500" />,
       title: "Intelligent Search",
       description: "Quickly find specific information within extracted text using our smart search functionality."
     },
     { 
-      icon: <Download className="w-10 h-10 text-violet-500" />,
+      icon: <Download className="w-10 h-10 text-accent-500" />,
       title: "Export Options",
       description: "Export extracted text in multiple formats including TXT, DOC, PDF, and more."
     }
@@ -56,7 +56,7 @@ const Home: React.FC = () => {
         {/* Video Background */}
         <div className="absolute inset-0">
   {/* Gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-violet-50/60 to-white/90 z-10 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-accent-50/60 to-white/90 z-10 pointer-events-none"></div>
 
           {/* Background video */}
           <video
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
             className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight mb-6"
           >
             Extract Text from <br />
-            <span className="text-violet-500">Any Document</span>
+            <span className="text-accent-500">Any Document</span>
           </motion.h1>
           
           <motion.p
@@ -106,7 +106,7 @@ No templates. No rules. Just results.
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full transition-colors"
+                className="px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full transition-colors"
               >
                 Try It Now
               </motion.button>
@@ -174,7 +174,7 @@ No templates. No rules. Just results.
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-violet-100 to-violet-200">
+      <section className="py-20 bg-gradient-to-r from-accent-100 to-accent-200">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -192,7 +192,7 @@ No templates. No rules. Just results.
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full transition-colors"
+                className="px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full transition-colors"
               >
                 Get Started Free
               </motion.button>

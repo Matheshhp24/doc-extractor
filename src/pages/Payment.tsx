@@ -143,7 +143,7 @@ const Payment: React.FC = () => {
                     transition={{ type: "spring", stiffness: 300, damping: 10 }}
                     className={`border-2 rounded-xl p-6 cursor-pointer transition-colors ${
                       planType === plan.id
-                        ? 'border-violet-500 bg-violet-50'
+                        ? 'border-accent-500 bg-accent-50'
                         : 'border-gray-200'
                     }`}
                     onClick={() => setPlanType(plan.id as PlanType)}
@@ -165,7 +165,7 @@ const Payment: React.FC = () => {
                       </div>
                       <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                         planType === plan.id
-                          ? 'bg-violet-500 border-violet-500'
+                          ? 'bg-accent-500 border-accent-500'
                           : 'border-gray-300'
                       }`}>
                         {planType === plan.id && (
@@ -177,7 +177,7 @@ const Payment: React.FC = () => {
                     <ul className="mt-6 space-y-3">
                       {plan.features.map((feature, index) => (
                         <li key={index} className="flex items-start">
-                          <Check className="w-5 h-5 text-violet-500 mt-0.5 mr-2 flex-shrink-0" />
+                          <Check className="w-5 h-5 text-accent-500 mt-0.5 mr-2 flex-shrink-0" />
                           <span className="text-gray-700">
                             {feature}
                           </span>
@@ -195,7 +195,7 @@ const Payment: React.FC = () => {
                   onClick={() => setCurrentStep('payment')}
                   className={
                     planType === 'annual' || planType === 'monthly'
-                    ? 'px-8 py-3 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full shadow-md transition-colors'
+                    ? 'px-8 py-3 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full shadow-md transition-colors'
                     :""
                   }
                 >
@@ -256,7 +256,7 @@ const Payment: React.FC = () => {
                             value={cardState.number}
                             onChange={handleInputChange}
                             onFocus={handleInputFocus}
-                            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                            className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                             required
                           />
                         </div>
@@ -275,7 +275,7 @@ const Payment: React.FC = () => {
                           value={cardState.name}
                           onChange={handleInputChange}
                           onFocus={handleInputFocus}
-                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                           required
                         />
                       </div>
@@ -294,7 +294,7 @@ const Payment: React.FC = () => {
                             value={cardState.expiry}
                             onChange={handleInputChange}
                             onFocus={handleInputFocus}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                             required
                           />
                         </div>
@@ -312,7 +312,7 @@ const Payment: React.FC = () => {
                             value={cardState.cvc}
                             onChange={handleInputChange}
                             onFocus={handleInputFocus}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                             required
                           />
                         </div>
@@ -324,7 +324,7 @@ const Payment: React.FC = () => {
                           whileTap={{ scale: 0.98 }}
                           type="submit"
                           disabled={isProcessing}
-                          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-colors"
+                          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent-600 hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-colors"
                         >
                           {isProcessing ? (
                             <div className="flex items-center">
@@ -345,7 +345,7 @@ const Payment: React.FC = () => {
 
                 {/* Right side - Order Summary */}
                 <div>
-                  <div className="bg-violet-50 rounded-xl p-6">
+                  <div className="bg-accent-50 rounded-xl p-6">
                     <h3 className="text-lg font-medium text-gray-800 mb-4">
                       Order Summary
                     </h3>
@@ -353,7 +353,7 @@ const Payment: React.FC = () => {
                     <div className="border-b border-gray-200 pb-4 mb-4">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center">
-                          <Package className="w-5 h-5 text-violet-500 mr-2" />
+                          <Package className="w-5 h-5 text-accent-500 mr-2" />
                           <span className="text-gray-700">
                             DocCrunch.Ai Pro - {planType === 'monthly' ? 'Monthly' : 'Annual'} Plan
                           </span>
@@ -402,7 +402,7 @@ const Payment: React.FC = () => {
                   <div className="mt-4 text-center">
                     <button
                       onClick={() => setCurrentStep('plan')}
-                      className="text-violet-600 hover:text-violet-800 transition-colors"
+                      className="text-accent-600 hover:text-accent-800 transition-colors"
                     >
                       &larr; Back to plans
                     </button>
@@ -434,7 +434,7 @@ const Payment: React.FC = () => {
               Thank you for upgrading to DocCrunch.Ai Pro! Your subscription is now active.
             </p>
             
-            <div className="bg-violet-50 rounded-xl p-6 max-w-md mx-auto mb-8">
+            <div className="bg-accent-50 rounded-xl p-6 max-w-md mx-auto mb-8">
               <h3 className="text-lg font-medium text-gray-800 mb-4">
                 Order Details
               </h3>
@@ -473,7 +473,7 @@ const Payment: React.FC = () => {
                 href="/dashboard"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-2 bg-violet-500 hover:bg-violet-600 text-white font-medium rounded-full shadow-md transition-colors"
+                className="px-6 py-2 bg-accent-500 hover:bg-accent-600 text-white font-medium rounded-full shadow-md transition-colors"
               >
                 Go to Dashboard
               </motion.a>

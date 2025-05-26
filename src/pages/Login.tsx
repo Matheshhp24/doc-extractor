@@ -72,21 +72,21 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-white">
-      <div className="w-full max-w-4xl flex flex-col md:flex-row overflow-hidden">
+    <div className="min-h-screen py-20 md:py-0 md:h-screen flex items-center justify-center px-4 bg-white">
+      <div className="w-full max-w-4xl md:max-h-[640px] flex flex-col md:flex-row overflow-hidden">
         {/* Left side - Animation */}
         <motion.div 
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className="bg-gradient-to-br from-violet-800 to-violet-500 p-8 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none flex-1 flex items-center justify-center"
+          className="bg-gradient-to-br from-accent-800 to-accent-500 p-4 md:p-8 rounded-t-2xl md:rounded-l-2xl md:rounded-tr-none flex-1 flex items-center justify-center"
         >
           <div className="text-center">
             <Lottie
               loop
               animationData={authAnimation}
               play
-              style={{ width: 250, height: 250 }}
+              style={{ width: 120, height: 120 }}
             />
             <h2 className="text-2xl font-bold text-gray-100 mt-4 mb-2">Welcome Back!</h2>
             <p className="text-gray-100">
@@ -100,7 +100,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-white p-8 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex-1 shadow-sm border border-gray-100"
+          className="bg-white p-4 md:p-8 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none flex-1 shadow-sm border border-gray-100"
         >
           <div className="mb-8">
             <h1 className="text-2xl font-bold text-gray-800 mb-2">Login</h1>
@@ -117,7 +117,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="h-5 w-5 text-violet-400" />
+                    <Mail className="h-5 w-5 text-accent-400" />
                   </div>
                   <motion.input
                     whileFocus={{ scale: 1.01 }}
@@ -125,7 +125,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                     placeholder="your@email.com"
                     required
                   />
@@ -138,7 +138,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Lock className="h-5 w-5 text-violet-400" />
+                    <Lock className="h-5 w-5 text-accent-400" />
                   </div>
                   <motion.input
                     whileFocus={{ scale: 1.01 }}
@@ -146,7 +146,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                     type={showPassword ? "text" : "password"}
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                    className="pl-10 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                     placeholder="••••••••"
                     required
                   />
@@ -154,7 +154,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
-                      className="text-violet-400 hover:text-violet-500 focus:outline-none"
+                      className="text-accent-400 hover:text-accent-500 focus:outline-none"
                     >
                       {showPassword ? (
                         <EyeOff className="h-5 w-5" />
@@ -173,14 +173,14 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-violet-600 focus:ring-violet-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-accent-600 focus:ring-accent-500 border-gray-300 rounded"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
                   Remember me
                 </label>
               </div>
               <div className="text-sm">
-                <a href="#" className="font-medium text-violet-600 hover:text-violet-500">
+                <a href="#" className="font-medium text-accent-600 hover:text-accent-500">
                   Forgot password?
                 </a>
               </div>
@@ -192,7 +192,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
                 whileTap={{ scale: 0.98 }}
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-colors"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent-600 hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-colors"
               >
                 {isLoading ? (
                   <div className="flex items-center">
@@ -212,7 +212,7 @@ const Login: React.FC = () => {  const [user, setUser] = useState<{ fullName: st
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600">
               Don't have an account?{' '}
-              <Link to="/signup" className="font-medium text-violet-600 hover:text-violet-500">
+              <Link to="/signup" className="font-medium text-accent-600 hover:text-accent-500">
                 Sign up
               </Link>
             </p>

@@ -197,7 +197,7 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-12 px-4 bg-violet-50">
+    <div className="min-h-screen pt-24 pb-12 px-4 bg-accent-50">
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-between items-center mb-8">
@@ -231,7 +231,7 @@ const Dashboard: React.FC = () => {
                 <div
                   {...getRootProps()}
                   className={`border-2 border-dashed ${
-                    isDragActive ? 'border-violet-500 bg-violet-50' : 'border-gray-300'
+                    isDragActive ? 'border-accent-500 bg-accent-50' : 'border-gray-300'
                   } rounded-xl p-8 transition-colors duration-200 cursor-pointer mb-4`}
                 >
                   <input {...getInputProps()} />
@@ -240,7 +240,7 @@ const Dashboard: React.FC = () => {
                     <FileText className="w-12 h-12 text-primary-500 mx-auto mb-4" />
                     
                     {isDragActive ? (
-                      <p className="text-violet-600">Drop your document here</p>
+                      <p className="text-accent-600">Drop your document here</p>
                     ) : (
                       <>
                         <p className="text-gray-700 mb-2">
@@ -255,9 +255,9 @@ const Dashboard: React.FC = () => {
                 </div>
 
                 {file && (
-                  <div className="bg-violet-50 rounded-lg p-4 flex items-center justify-between">
+                  <div className="bg-accent-50 rounded-lg p-4 flex items-center justify-between">
                     <div className="flex items-center overflow-hidden">
-                      <FileText className="w-5 h-5 text-violet-500 mr-2 flex-shrink-0" />
+                      <FileText className="w-5 h-5 text-accent-500 mr-2 flex-shrink-0" />
                       <span className="text-sm text-gray-700 truncate">
                         {file.name}
                       </span>
@@ -286,7 +286,7 @@ const Dashboard: React.FC = () => {
                           <motion.div
                             initial={{ width: '0%' }}
                             animate={{ width: `${progress}%` }}
-                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-violet-500"
+                            className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-accent-500"
                           />
                         </div>
                         <div className="text-right mt-1 text-xs text-gray-500">
@@ -308,7 +308,7 @@ const Dashboard: React.FC = () => {
             >
               <div className="p-6">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
-                  <FileText className="w-5 h-5 mr-2 text-violet-500" />
+                  <FileText className="w-5 h-5 mr-2 text-accent-500" />
                   Extracted Text
                 </h2>
 
@@ -317,7 +317,7 @@ const Dashboard: React.FC = () => {
                     ref={textAreaRef}
                     value={extractedText}
                     onChange={(e) => setExtractedText(e.target.value)}
-                    className="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-gray-50 text-gray-900 resize-none"
+                    className="w-full h-64 p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-gray-50 text-gray-900 resize-none"
                     placeholder="Extracted text will appear here..."
                     readOnly={status !== 'success'}
                   />
@@ -360,21 +360,21 @@ const Dashboard: React.FC = () => {
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-3 py-1 text-sm bg-violet-100 text-violet-700 rounded-full hover:bg-violet-200 transition-colors"
+                        className="px-3 py-1 text-sm bg-accent-100 text-accent-700 rounded-full hover:bg-accent-200 transition-colors"
                       >
                         Format Text
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-3 py-1 text-sm bg-violet-100 text-violet-700 rounded-full hover:bg-violet-200 transition-colors"
+                        className="px-3 py-1 text-sm bg-accent-100 text-accent-700 rounded-full hover:bg-accent-200 transition-colors"
                       >
                         Remove Line Breaks
                       </motion.button>
                       <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-3 py-1 text-sm bg-violet-100 text-violet-700 rounded-full hover:bg-violet-200 transition-colors"
+                        className="px-3 py-1 text-sm bg-accent-100 text-accent-700 rounded-full hover:bg-accent-200 transition-colors"
                       >
                         Trim Whitespace
                       </motion.button>
@@ -390,12 +390,12 @@ const Dashboard: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-8 bg-gradient-to-r from-violet-500 to-violet-700 rounded-2xl shadow-lg p-6 text-white"
+            className="mt-8 bg-gradient-to-r from-accent-500 to-accent-700 rounded-2xl shadow-lg p-6 text-white"
           >
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="mb-4 md:mb-0">
                 <h3 className="text-xl font-bold mb-2">Upgrade to Pro</h3>
-                <p className="text-violet-100">
+                <p className="text-accent-100">
                   Get advanced features like batch processing, OCR for handwritten text, and more.
                 </p>
               </div>
@@ -403,7 +403,7 @@ const Dashboard: React.FC = () => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-2 bg-white text-violet-700 font-medium rounded-full shadow-md hover:bg-violet-50 transition-colors"
+                  className="px-6 py-2 bg-white text-accent-700 font-medium rounded-full shadow-md hover:bg-accent-50 transition-colors"
                 >
                   Upgrade Now
                 </motion.button>

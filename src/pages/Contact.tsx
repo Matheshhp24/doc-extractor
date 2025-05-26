@@ -102,7 +102,7 @@ const Contact: React.FC = () => {
 
   const contactInfo = [
     {
-      icon: <Mail className="w-6 h-6 text-violet-500" />,
+      icon: <Mail className="w-6 h-6 text-accent-500" />,
       title: "Email Us",
       details: [
         CONTACT_EMAIL,
@@ -110,7 +110,7 @@ const Contact: React.FC = () => {
       ]
     },
     {
-      icon: <Phone className="w-6 h-6 text-violet-500" />,
+      icon: <Phone className="w-6 h-6 text-accent-500" />,
       title: "Call Us",
       details: [
         "+1 (555) 123-4567",
@@ -118,7 +118,7 @@ const Contact: React.FC = () => {
       ]
     },
     {
-      icon: <MapPin className="w-6 h-6 text-violet-500" />,
+      icon: <MapPin className="w-6 h-6 text-accent-500" />,
       title: "Visit Us",
       details: [
         "1234 Innovation Drive",
@@ -140,7 +140,7 @@ const Contact: React.FC = () => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Have questions about our text extraction technology? We're here to help!
           </p>
-          <p className="mt-2 text-violet-600">
+          <p className="mt-2 text-accent-600">
             Your messages will be sent from and to our support team at <span className="font-medium">{CONTACT_EMAIL}</span>
           </p>
         </motion.div>
@@ -176,7 +176,7 @@ const Contact: React.FC = () => {
                     transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
                     className="flex"
                   >
-                    <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center bg-violet-100 rounded-lg mr-4">
+                    <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center bg-accent-100 rounded-lg mr-4">
                       {item.icon}
                     </div>
                     <div>
@@ -204,7 +204,7 @@ const Contact: React.FC = () => {
                       href="#"
                       whileHover={{ y: -3 }}
                       transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      className="h-10 w-10 flex items-center justify-center rounded-full bg-violet-100 text-violet-600 hover:bg-violet-200 transition-colors"
+                      className="h-10 w-10 flex items-center justify-center rounded-full bg-accent-100 text-accent-600 hover:bg-accent-200 transition-colors"
                     >
                       <span className="sr-only">{social}</span>
                       {/* Using a placeholder for social icons */}
@@ -227,7 +227,7 @@ const Contact: React.FC = () => {
           >
             <div className="p-8">
               <h2 className="text-xl font-semibold text-gray-800 mb-6 flex items-center">
-                <MessageCircle className="w-5 h-5 mr-2 text-violet-500" />
+                <MessageCircle className="w-5 h-5 mr-2 text-accent-500" />
                 Send Us a Message
               </h2>
 
@@ -287,7 +287,7 @@ const Contact: React.FC = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                         placeholder="John Doe"
                         required
                       />
@@ -303,7 +303,7 @@ const Contact: React.FC = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                         placeholder="your@email.com"
                         required
                       />
@@ -322,7 +322,7 @@ const Contact: React.FC = () => {
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800"
                       required
                     >
                       <option value="" disabled>Select a subject</option>
@@ -344,7 +344,7 @@ const Contact: React.FC = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows={6}
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-violet-500 bg-white text-gray-800 resize-none"
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent-500 focus:border-accent-500 bg-white text-gray-800 resize-none"
                       placeholder="How can we help you?"
                       required
                     />
@@ -356,7 +356,7 @@ const Contact: React.FC = () => {
                       whileTap={{ scale: 0.98 }}
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-violet-500 transition-colors"
+                      className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-accent-600 hover:bg-accent-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-500 transition-colors"
                     >
                       {isSubmitting ? (
                         <>

@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
           {/* Company Info */}
           <motion.div variants={itemVariants} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
             <div className="flex items-center gap-2 mb-6">
-              <FileText className="w-6 h-6 text-violet-500" />
+              <FileText className="w-6 h-6 text-accent-500" />
               <span className="text-xl font-bold tracking-wider text-gray-800">DocCrunch.Ai</span>
             </div>
             <p className="text-gray-600 mb-6">
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <motion.a 
                 href="#" 
-                className="text-gray-500 hover:text-violet-500 transition-all duration-200 p-2 rounded-full"
+                className="text-gray-500 hover:text-accent-500 transition-all duration-200 p-2 rounded-full"
                 whileHover={{ y: -3, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
@@ -51,7 +51,7 @@ const Footer: React.FC = () => {
               </motion.a>
               <motion.a 
                 href="#" 
-                className="text-gray-500 hover:text-violet-500 transition-all duration-200 p-2 rounded-full"
+                className="text-gray-500 hover:text-accent-500 transition-all duration-200 p-2 rounded-full"
                 whileHover={{ y: -3, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
               </motion.a>
               <motion.a 
                 href="#" 
-                className="text-gray-500 hover:text-violet-500 transition-all duration-200 p-2 rounded-full"
+                className="text-gray-500 hover:text-accent-500 transition-all duration-200 p-2 rounded-full"
                 whileHover={{ y: -3, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
@@ -76,7 +76,7 @@ const Footer: React.FC = () => {
                 <li key={item}>
                   <Link 
                     to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                    className="text-gray-600 hover:text-violet-500 transition-all duration-200 hover:pl-1"
+                    className="text-gray-600 hover:text-accent-500 transition-all duration-200 hover:pl-1"
                   >
                     {item}
                   </Link>
@@ -93,7 +93,7 @@ const Footer: React.FC = () => {
                 <li key={item}>
                   <a 
                     href="#" 
-                    className="text-gray-600 hover:text-violet-500 transition-all duration-200 hover:pl-1"
+                    className="text-gray-600 hover:text-accent-500 transition-all duration-200 hover:pl-1"
                   >
                     {item}
                   </a>
@@ -107,15 +107,15 @@ const Footer: React.FC = () => {
             <h3 className="text-lg font-semibold mb-6 text-gray-800">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
-                <Mail className="w-5 h-5 text-violet-500 mt-0.5" />
+                <Mail className="w-5 h-5 text-accent-500 mt-0.5" />
                 <span className="text-gray-600">support@Doccrunch.com</span>
               </li>
               <li className="flex items-start space-x-3">
-                <Phone className="w-5 h-5 text-violet-500 mt-0.5" />
+                <Phone className="w-5 h-5 text-accent-500 mt-0.5" />
                 <span className="text-gray-600">+1 (555) 123-4567</span>
               </li>
               <li className="flex items-start space-x-3">
-                <MapPin className="w-5 h-5 text-violet-500 mt-0.5" />
+                <MapPin className="w-5 h-5 text-accent-500 mt-0.5" />
                 <span className="text-gray-600">
                   1234 Innovation Drive<br />
                   San Francisco, CA 94107

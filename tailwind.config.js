@@ -31,17 +31,17 @@ export default {
           950: '#083344',  // darkest blue
         },
         accent: {
-          50: '#F5F3FF',   // lightest violet
-          100: '#EDE9FE',  // very light violet
-          200: '#DDD6FE',  // light violet
-          300: '#C4B5FD',  // medium light violet
-          400: '#A78BFA',  // medium violet
-          500: '#8B5CF6',  // bright violet
-          600: '#7C3AED',  // vibrant violet
-          700: '#6D28D9',  // deep violet
-          800: '#5B21B6',  // rich purple
-          900: '#4C1D95',  // deep purple
-          950: '#2E1065',  // darkest purple
+          50: '#FFF1F3',   // lightest pink
+          100: '#FFE4E8',  // very light pink
+          200: '#FFC9D2',  // light pink
+          300: '#FFA3B5',  // medium light pink
+          400: '#FD7490',  // medium pink
+          500: '#FB4570',  // bright pink (base color)
+          600: '#F41F52',  // vibrant pink
+          700: '#DB0A3B',  // deep pink
+          800: '#B50731',  // rich pink
+          900: '#90052A',  // deep rose
+          950: '#5E0019',  // darkest rose
         },
         success: {
           50: '#F0FDF4',
@@ -100,21 +100,21 @@ export default {
         sans: ['Inter var', 'sans-serif'],
       },
       boxShadow: {
-        glass: '0 8px 32px rgba(139, 92, 246, 0.08), 0 4px 16px rgba(139, 92, 246, 0.05)',
+        glass: '0 8px 32px rgba(251, 69, 112, 0.08), 0 4px 16px rgba(251, 69, 112, 0.05)',
         subtle: '0 2px 10px rgba(0, 0, 0, 0.03)',
         elevated: '0 10px 30px rgba(0, 0, 0, 0.05), 0 5px 15px rgba(0, 0, 0, 0.03)',
-        'soft-xl': '0 10px 25px -5px rgba(139, 92, 246, 0.08), 0 8px 10px -6px rgba(139, 92, 246, 0.03)',
-        'inner-glow': 'inset 0 2px 20px 0 rgba(139, 92, 246, 0.05)',
-        'card-hover': '0 20px 30px -10px rgba(139, 92, 246, 0.15)',
+        'soft-xl': '0 10px 25px -5px rgba(251, 69, 112, 0.08), 0 8px 10px -6px rgba(251, 69, 112, 0.03)',
+        'inner-glow': 'inset 0 2px 20px 0 rgba(251, 69, 112, 0.05)',
+        'card-hover': '0 20px 30px -10px rgba(251, 69, 112, 0.15)',
       },
       backdropBlur: {
         glass: '10px',
       },
       backgroundImage: {
-        'accent-gradient': 'linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)',
+        'accent-gradient': 'linear-gradient(135deg, rgba(251, 69, 112, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)',
         'glass-card': 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)',
         'frosted-glass': 'linear-gradient(135deg, rgba(249, 247, 245, 0.95) 0%, rgba(242, 240, 237, 0.85) 100%)',
-        'soft-glow': 'radial-gradient(circle at top right, rgba(139, 92, 246, 0.08), transparent 70%)',
+        'soft-glow': 'radial-gradient(circle at top right, rgba(251, 69, 112, 0.08), transparent 70%)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
@@ -213,15 +213,15 @@ export default {
         'in-out-back': 'cubic-bezier(0.68, -0.6, 0.32, 1.6)',
       },
       backgroundImage: {
-        'accent-gradient': 'linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)',
+        'accent-gradient': 'linear-gradient(135deg, rgba(251, 69, 112, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%)',
         'glass-card': 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%)',
         'frosted-glass': 'linear-gradient(135deg, rgba(249, 247, 245, 0.95) 0%, rgba(242, 240, 237, 0.85) 100%)',
-        'soft-glow': 'radial-gradient(circle at top right, rgba(139, 92, 246, 0.08), transparent 70%)',
-        'gradient-violet': 'linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%)',
-        'gradient-violet-light': 'linear-gradient(135deg, #c4b5fd 0%, #ddd6fe 100%)',
+        'soft-glow': 'radial-gradient(circle at top right, rgba(251, 69, 112, 0.08), transparent 70%)',
+        'gradient-pink': 'linear-gradient(135deg, #fb4570 0%, #fd7490 100%)',
+        'gradient-pink-light': 'linear-gradient(135deg, #ffa3b5 0%, #ffc9d2 100%)',
         'gradient-radial': 'radial-gradient(circle, var(--tw-gradient-stops))',
-        'gradient-radial-violet': 'radial-gradient(circle at center, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%)',
-        'dots-pattern': 'radial-gradient(rgba(139, 92, 246, 0.2) 2px, transparent 2px)',
+        'gradient-radial-pink': 'radial-gradient(circle at center, rgba(251, 69, 112, 0.5) 0%, rgba(251, 69, 112, 0) 70%)',
+        'dots-pattern': 'radial-gradient(rgba(251, 69, 112, 0.2) 2px, transparent 2px)',
       },
       backgroundSize: {
         'dots-sm': '20px 20px',

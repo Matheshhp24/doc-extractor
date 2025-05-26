@@ -51,10 +51,10 @@ const Loading: React.FC = () => {
         transition={{ duration: 0.5 }}
       >
         {/* Document container with scanning effect */}
-        <div className="relative w-64 h-80 bg-white border-2 border-violet-300 rounded-lg shadow-lg mb-8 overflow-hidden">
+        <div className="relative w-64 h-80 bg-white border-2 border-accent-300 rounded-lg shadow-lg mb-8 overflow-hidden">
           {/* Document header */}
-          <div className="h-8 w-full bg-violet-100 border-b border-violet-300 mb-4 flex items-center justify-center">
-            <div className="w-20 h-3 bg-violet-300 rounded-full"></div>
+          <div className="h-8 w-full bg-accent-100 border-b border-accent-300 mb-4 flex items-center justify-center">
+            <div className="w-20 h-3 bg-accent-300 rounded-full"></div>
           </div>
           
           {/* Text lines being processed */}
@@ -62,7 +62,7 @@ const Loading: React.FC = () => {
             {[...Array(8)].map((_, i) => (
               <motion.div
                 key={i}
-                className="h-3 bg-violet-200 rounded-full"
+                className="h-3 bg-accent-200 rounded-full"
                 custom={i}
                 variants={textLineVariants}
                 initial="initial"
@@ -73,7 +73,7 @@ const Loading: React.FC = () => {
           
           {/* Scanner line effect */}
           <motion.div 
-            className="absolute inset-x-0 h-1 bg-violet-500 opacity-70"
+            className="absolute inset-x-0 h-1 bg-accent-500 opacity-70"
             variants={scannerVariants}
             initial="initial"
             animate="animate"
@@ -86,10 +86,10 @@ const Loading: React.FC = () => {
           animate={{ opacity: [0.7, 1, 0.7] }}
           transition={{ duration: 1.8, repeat: Infinity }}
         >
-          <p className="text-violet-800 text-lg font-medium mb-1">
+          <p className="text-accent-800 text-lg font-medium mb-1">
             Extracting Text
           </p>
-          <p className="text-violet-600 text-sm">
+          <p className="text-accent-600 text-sm">
             Processing your document...
           </p>
         </motion.div>
